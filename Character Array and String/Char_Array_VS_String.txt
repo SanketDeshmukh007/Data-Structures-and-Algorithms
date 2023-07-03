@@ -1,0 +1,21 @@
+In C++, both character arrays and strings are used to store sequences of characters, but they have some key differences:
+
+1. Syntax: Character arrays are declared using square brackets, while strings are declared using double quotes or using the string class. 
+For example:
+C++
+char arr[] = {'h', 'e', 'l', 'l', 'o};
+char str[] = "hello"; 
+std::string s = "hello";
+
+2. Size: The size of a character array must be specified at the time of declaration and cannot be changed later, while the size of a string can be changed dynamically as needed.
+
+3. Null termination: C-style character arrays need to be null terminated, which means that a null character (\0) needs to be added at the end of the array to indicate the end of the string. 
+String objects automatically add a null character at the end, so there's no need to do this manually.
+
+4. String manipulation: Strings have several built-in member functions that can be used to manipulate them, such as append(), substr(), find() etc. 
+Character arrays do not have these built-in functions, so string manipulation must be done manually using functions like strcpy(), strcat (), strlen(), etc.
+
+5. Compatibility: Character arrays are compatible with C-style strings and can be used with functions that take C-style strings as arguments, while strings can be used with C++ string manipulation functions.
+
+In general, strings are easier to use and more flexible, while character arrays are faster and more memory-efficient. 
+However, the choice between the two depends on the specific requirements of the program and the preferences of the programmer.
