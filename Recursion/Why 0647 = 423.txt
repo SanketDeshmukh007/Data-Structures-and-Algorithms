@@ -1,0 +1,15 @@
+In C++, when an integer literal starts with a leading zero, 
+it is interpreted as an octal (base 8) value. 
+In the case of int a = an octal value that represents the decimal value 423 
+(since 68^2 + 48^1 + 7*8^0 = 384 + 32 + 7 = 423).
+So when you print the value of a using std::cout, 
+it will display the decimal value of 423.
+Here's an example code snippet that demonstrates this behavior:
+
+#include <iostream>
+int main() {
+int a = 0647;
+std::cout <<<< a << std::endl; // Output: 423
+return 0;
+}
+0647, the value 0647 is
