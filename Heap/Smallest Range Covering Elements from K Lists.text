@@ -1,0 +1,76 @@
+class node
+{
+    public:
+    int val;
+    int apos;
+    int vpos;
+    
+    node(int v,int a,int vp)
+    {
+        val = v;
+        apos = a;
+        vpos = vp;
+    }
+};
+
+class compare
+{
+    public:
+    bool operator()(node *a,node *b)
+    {
+        return a->val > b->val;
+    }
+};
+
+vector<int> smallestRange(vector<vector<int>>& nums) {
+        ios_base::sync_with_stdio(false);
+        cin.tie(0);
+        cout.tie(0);
+        
+        int k = nums.size();
+        int mini = INT_MAX;
+        int maxi = INT_MIN;
+        priority_queue<node*,vector<node*>,compare> p;
+        for(int i = 0; i < k; i++)
+        {
+            int element = nums[i][0];
+            mini = min(mini,element);
+            maxi = max(maxi,element);
+            node *d = new node(element,i,0);
+            p.push(d);
+        }
+        
+        int ansStart = mini;
+        int ansEnd = maxi;
+        
+        while(!p.empty())
+        {
+            node *temp = p.top();
+            int ele = temp->val;
+            int ap = temp->apos;
+            int vp = temp->vpos;
+            p.pop();
+            
+            mini = ele;
+            int currRange = maxi - mini;
+            int ansRange = ansEnd - ansStart;
+            
+            if(currRange < ansRange)
+            {
+                ansStart = mini;
+                ansEnd = maxi;
+            }
+            
+            if(vp + 1 < nums[ap].size())
+            {
+                int ele = nums[ap][vp+1];
+                maxi = max(maxi,ele);
+                node *d = new node(nums[ap][vp+1],ap,vp+1);
+                p.push(d);
+            }
+            else
+                break;
+            
+        }
+        return {ansStart,ansEnd};
+    }
